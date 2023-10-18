@@ -11,18 +11,23 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="autodistill-base-model",
+    name="autodistill-fastvit",
     version=version,
-    author="",
-    author_email="",
-    description="Model for use with Autodistill",
+    author="Roboflow",
+    author_email="support@roboflow.com",
+    description="FastViT model for use with Autodistill",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="",
+    url="https://github.com/autodistill/autodistill-fastvit",
     install_requires=[
-        # list your requires
+        "timm",
+        "torch",
+        "autodistill",
+        "Pillow",
+        "supervision"
     ],
     packages=find_packages(exclude=("tests",)),
+    package_data={"autodistill_fastvit": ["classes.json"]},
     extras_require={
         "dev": ["flake8", "black==22.3.0", "isort", "twine", "pytest", "wheel"],
     },
