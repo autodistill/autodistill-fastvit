@@ -40,6 +40,9 @@ class FastViT(DetectionBaseModel):
     def predict(self, input: Any, confidence: int = 0.5) -> sv.Detections:
         img = load_image(input, return_format="PIL")
 
+        if img.mode == "RGBA":
+            img = img.convert("RGB")
+
         output = self.model(self.transforms(img).unsqueeze(0))
 
         prompts = self.ontology.prompts() if self.ontology is not None else []
